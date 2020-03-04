@@ -1,7 +1,7 @@
-const handleId = () =>{
-    event.preventDefault();
-    let id = idInput;
-    console.log(id);
+// const handleId = () =>{
+//     event.preventDefault();
+//     let id = idInput;
+//     console.log(id);
     // URLSearchParams.get()
 
 // fetch('/confirmed', {
@@ -20,4 +20,4 @@ const handleId = () =>{
     // seat.innerText= data.seat;
     // const flight = document.getElementById('flight');
     // flight.innerText= data.flight;
-}
+// }
