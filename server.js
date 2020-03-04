@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 8000;
 
 const { seats } = require(__dirname + '/test-data/flightSeating.js');
 const { reservations } = require(__dirname + '/test-data/reservations.js');
-const { handleConfirmation } = require(__dirname + '/public/seat-select/js/confirmed.js');
 
+let receivedData={};
 express()
     .use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
@@ -21,13 +21,19 @@ express()
 	.use(express.static('public'))
     .use(bodyParser.json())
     .use(express.urlencoded({extended: false}))
-    .set('view engine', 'ejs')
+    // .set('view engine', 'ejs')
 
     
     // endpoints
 
     .get('/seat-select', (req, res)=>{
         res.sendFile(__dirname + '/public/seat-select/index.html');
+    })
+    .get('/load', (req, res) =>{
+        const flights = Object.keys(seats);
+        console.log(flights);
+        
+        res.status(200).json({body: flights})
     })
     .post('/check', (req, res) =>{
         let flight =req.body.flight;
@@ -40,15 +46,28 @@ express()
         }
     })
     .post('/confirmed', (req, res) =>{
-        let receivedData = req.body;
+        receivedData = req.body;
         console.log(receivedData);
-        res.sendFile(__dirname + '/public/seat-select/confirmed.html');
-        // handleConfirmation(receivedData);
-        
+        res.status(200).json({ status: 'success'});  
     })
-    // .get('/confirmed', (req, res) =>{
-    //     sendFile(__dirname + '/public/seat-select/confirmed.html');
-    // })
+    .get('/confirmed', (req, res) =>{
+        console.log(receivedData);
+        let newReservation = {
+            id: Math.round(Math.random()*76590865322876),
+            flight: receivedData.flight,
+            seat: receivedData.seat,
+            givenName: receivedData.firstName,
+            surname: receivedData.lastName,
+            email: receivedData.email
+        };
+        reservations.push(newReservation);
+        console.log(reservations);
+        
+        res.status(200).json(receivedData);
+    })
+    .get('/reservation', (req, res) =>{
+        res.sendFile(__dirname + '/public/seat-select/view-reservation.html');
+    })
 
     .use((req, res) => res.send('Not Found'))
     .listen(PORT, () => console.log(`Listening on port ${PORT}`));
