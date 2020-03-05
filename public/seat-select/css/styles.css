@@ -237,7 +237,14 @@ input {
 .form-item input::placeholder {
     color: #999;
 }
-
+.newbutton {
+    background-color: yellow;
+    color: #D80026;
+    margin-left: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 .button {
     border-radius: 4px;
     font-size: 16px;

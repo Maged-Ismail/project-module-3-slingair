@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0, minimal-ui" />
-        <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="/seat-select/css/styles.css" />
         <title>Reservation</title>
     </head>
     <body>
@@ -12,10 +12,10 @@
                 <h1 class='header-logo'>Air Slingshot</h1>
             </div>
             <div class="flight-select" id='flightNumber'>
-                <form onsubmit="handleId">
+                <form onsubmit = "handleId(event)">
                     <label for="flight">Enter ID :</label>
-                    <input name="id" id="flight" class="flight" type="text" placeholder="ID #" />
-                    <button type="submit">Find Your Reservation</button>
+                    <input name="id" id="ID" class="flight" type="text" placeholder="ID #" />
+                    <button class="newbutton" type="submit">Search</button>
                 </form>
         </div>
             <div class="content">
@@ -33,6 +33,6 @@
             </div>
         </div>
         <p class='footer-logo'>The only way to fly!</p>
-        <script src="./js/view-reservation.js"></script>
+        <script src="/seat-select/js/view-reservation.js"></script>
     </body>
 </html>

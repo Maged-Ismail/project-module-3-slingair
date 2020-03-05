@@ -68,6 +68,24 @@ express()
     .get('/reservation', (req, res) =>{
         res.sendFile(__dirname + '/public/seat-select/view-reservation.html');
     })
+    .post('/fetch', (req, res) => {
+        console.log(req);
+        let id = req.body;
+        console.log(id);
+        
+        reservations.forEach(reservation =>{
+            if (reservation.id === id ){
+                let data= {
+                    flight: reservation.flight,
+                    seat: reservation.seat,
+                    name: `${reservation.givenName} ${reservation.surname}`,
+                    email: reservation.email
+                }
+                console.log(data); 
+            }
+        })
+        res.status(200).json({ body: data});
+    })
 
     .use((req, res) => res.send('Not Found'))
     .listen(PORT, () => console.log(`Listening on port ${PORT}`));

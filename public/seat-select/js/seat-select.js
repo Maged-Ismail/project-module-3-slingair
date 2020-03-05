@@ -25,6 +25,7 @@ const renderSeats = (availableSeats) => {
             const seat = document.createElement('li')
             const seatOccupied = `<li><label class="seat"><span id="${seatNumber}" class="occupied">${seatNumber}</span></label></li>`
             const seatAvailable = `<li><label class="seat"><input type="radio" name="seat" value="${seatNumber}" /><span id="${seatNumber}" class="avail">${seatNumber}</span></label></li>`        
+            
             seat.innerHTML = seatAvailable;
             row.appendChild(seat);
         }
@@ -34,6 +35,7 @@ const renderSeats = (availableSeats) => {
             // document.getElementById(x.id).style.zIndex = '-5';
             document.getElementById(x.id).classList.remove('available');
             document.getElementById(x.id).classList.add('occupied');
+            // x.innerHTML = seatOccupied;
         }
     })
     
