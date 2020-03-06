@@ -81,6 +81,12 @@ p, a, li, blockquote, input {
     padding: var(--page-padding);
     margin-bottom: var(--page-padding);
 }
+.flight{
+    height: 45px;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 20px;
+}
 .flight-select input {
     width: 125px;
     margin-left: var(--page-padding);
@@ -231,7 +237,14 @@ input {
 .form-item input::placeholder {
     color: #999;
 }
-
+.newbutton {
+    background-color: yellow;
+    color: #D80026;
+    margin-left: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 .button {
     border-radius: 4px;
     font-size: 16px;
